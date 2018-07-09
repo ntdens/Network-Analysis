@@ -4,4 +4,10 @@ import plotly.offline as py
 import plotly.graph_objs as go
 
 web = LogToDataFrame('http.log')
-print(web.host.unique())
+#print(web.host.unique())
+
+conn = LogToDataFrame('conn.log')
+conn.index.names = ['Timestamp']
+conn.columns.names = ['Columns']
+conn = conn.rename(columns={'id.orig_h':'source','id.orig_p':'src port','id.resp_h':'destination','id.resp_p':'dst port'})
+print(conn[['source','src port','destination','dst port','proto','service']])
