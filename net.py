@@ -7,7 +7,7 @@ import cufflinks as cf
 
 def main():
     web = LogToDataFrame('http.log')
-    # print(web.host.unique())
+    print(web.host.unique())
 
     conn = LogToDataFrame('conn.log')
     conn.index.names = ['Timestamp']
